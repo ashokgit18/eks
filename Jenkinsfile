@@ -16,6 +16,7 @@ pipeline {
     stage('TF plan') {
             steps {
                // sh 'terraform plan'
+                echo "plan sucess"
             }
         }
     stage('TF apply') {
