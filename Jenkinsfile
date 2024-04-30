@@ -15,7 +15,7 @@ pipeline {
         }
     stage('TF plan') {
             steps {
-               // sh 'terraform plan'
+              sh 'terraform plan'
                 echo "plan sucess"
             }
         }
@@ -24,8 +24,8 @@ pipeline {
                 expression { params.DEPLOY_STAGE == 'apply' }
             }
             steps {
-                //sh 'terraform apply --auto-approve'
-                echo  "in apply stage"
+                sh 'terraform apply --auto-approve'
+                echo  "terraform apply sucess"
             }
         }
     stage('TF destroy') {
@@ -33,8 +33,8 @@ pipeline {
                 expression { params.DEPLOY_STAGE == 'destroy' }
             }
             steps {
-                //sh 'terraform destroy --auto-approve'
-                echo "in destroy stage"
+                sh 'terraform destroy --auto-approve'
+                echo "eks cluster has been deleted"
             }
         }
     }
