@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    options { buildDiscarder(logRotator(numToKeepStr: '10')) }
+    options { buildDiscarder(logRotator(numToKeepStr: '20')) }
     parameters { choice(name: 'DEPLOY_STAGE', choices: ['apply', 'destroy', 'plan'], description: 'select the action') }
     stages {
         stage('TF init') {
