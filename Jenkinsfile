@@ -7,6 +7,9 @@ pipeline {
            
             steps {
                 sh 'aws configure'
+                sh ''' export AWS_ACCESS_KEY_ID=AKIAZI2LCXLYDKKWCV5A
+export AWS_SECRET_ACCESS_KEY=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
+export AWS_DEFAULT_REGION=us-west-2 '''
             }
         }
         stage('TF init') {
