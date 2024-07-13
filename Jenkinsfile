@@ -3,15 +3,6 @@ pipeline {
     options { buildDiscarder(logRotator(numToKeepStr: '20')) }
     parameters { choice(name: 'DEPLOY_STAGE', choices: ['init', 'validate', 'apply', 'destroy', 'plan'], description: 'select the action') }
     stages {
-        stage('AWS Credentials') {
-           
-            steps {
-                sh 'aws configure'
-                sh ''' export AWS_ACCESS_KEY_ID=AKIAZI2LCXLYDKKWCV5A
-export AWS_SECRET_ACCESS_KEY=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
-export AWS_DEFAULT_REGION=us-west-2 '''
-            }
-        }
         stage('TF init') {
             when {
                 expression { params.DEPLOY_STAGE == 'init' }
